@@ -851,6 +851,185 @@ section:hover::before {
     transition: color 0.3s ease;
 }
 
+/* Scroll Top Button */
+.scroll-top {
+    position: fixed;
+    right: 1.25rem;
+    bottom: 1.25rem;
+    width: 3.6rem;
+    height: 3.6rem;
+    background: var(--primary-color);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(37,99,235,0.25);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    z-index: 1200;
+}
+
+.scroll-top.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+/* Mobile Navigation */
+body {
+    padding-top: 76px; /* reserve space for fixed nav */
+}
+
+.burger {
+    display: none;
+    cursor: pointer;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background: var(--text-color);
+    margin: 5px 0;
+    transition: all 0.3s ease;
+}
+
+.nav-links {
+    align-items: center;
+}
+
+/* Show burger and collapse nav on small screens */
+@media (max-width: 900px) {
+    .nav-links {
+        position: fixed;
+        top: 76px;
+        right: 0;
+        height: calc(100% - 76px);
+        width: 260px;
+        background: linear-gradient(180deg, #ffffff, #f8fafc);
+        flex-direction: column;
+        gap: 1.2rem;
+        padding-top: 2rem;
+        transform: translateX(100%);
+        transition: transform 0.35s ease;
+        box-shadow: -8px 0 24px rgba(16,24,40,0.06);
+        z-index: 1100;
+    }
+
+    .nav-links.nav-active {
+        transform: translateX(0);
+    }
+
+    .nav-links li {
+        margin: 0.6rem 0;
+        list-style: none;
+    }
+
+    .burger {
+        display: block;
+    }
+
+    .nav-links a {
+        font-size: 1.05rem;
+        color: var(--text-color);
+    }
+}
+
+/* Burger transform when active */
+.burger.toggle .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.burger.toggle .line2 {
+    opacity: 0;
+}
+
+.burger.toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+@keyframes navLinkFade {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Experience tweaks for small screens */
+@media (max-width: 768px) {
+    .experience-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .experience-item {
+        padding: 1.25rem;
+    }
+
+    .experience h2 {
+        font-size: 1.85rem;
+    }
+}
+
+/* Contact form responsive */
+@media (max-width: 900px) {
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .contact-form {
+        order: 2;
+    }
+
+    .contact-info {
+        order: 1;
+    }
+}
+
+/* Form inputs full width */
+.contact-form form .form-group input,
+.contact-form form .form-group textarea {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border: 1px solid #e6e9ee;
+    border-radius: 0.6rem;
+    font-size: 1rem;
+}
+
+/* Improve project card responsiveness */
+@media (max-width: 700px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-content {
+        padding: 1.8rem;
+        border-radius: 1rem;
+    }
+
+    .typing-text {
+        font-size: 1.8rem;
+    }
+}
+
+/* Reduce large paddings on very small screens */
+@media (max-width: 420px) {
+    section {
+        padding: 3rem 1rem;
+    }
+
+    .nav-links {
+        width: 85%;
+    }
+}
+
 .contact-text a:hover {
     color: #2563eb;
 }
